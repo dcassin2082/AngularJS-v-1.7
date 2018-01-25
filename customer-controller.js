@@ -11,8 +11,6 @@
                 begin = ($scope.currentPage - 1) * $scope.numPerPage;
                 end = begin + $scope.numPerPage;
                 index = $scope.customers.indexOf(value);
-                console.log(value);
-                console.log(index);
                 return (begin <= index && index < end);
             };
             $scope.orderByField = "CustomerID";
@@ -41,9 +39,9 @@
             Phone: customer.Phone
         }
         customerFactory.addCustomer(newCustomer).then(function (response) {
-            customerFactory.getCustomers().then(function () {
                 $scope.status = 'customer added sucessfully';
                 alert($scope.status);
+            customerFactory.getCustomers().then(function () {
                 $('#addModal').modal('hide');
                 $scope.customer.Address = '';
                 $scope.customer.FirstName = '';
