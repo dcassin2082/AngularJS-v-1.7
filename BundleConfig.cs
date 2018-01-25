@@ -31,8 +31,7 @@ namespace CustomerCrud
                       "~/Scripts/app/app.js",
                       "~/Scripts/app/customer-controller.js",
                        "~/Scripts/app/customer-factory.js",
-                        "~/Scripts/app/customer-service.js",
-                      "~/Scripts/respond.js"));
+                        "~/Scripts/app/customer-service.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
