@@ -1,4 +1,4 @@
-﻿app.controller('customerController', ['$scope', 'customerFactory', function ($scope, customerFactory) {
+app.controller('customerController', ['$scope', 'customerFactory', function ($scope, customerFactory) {
     $scope.getCustomers = function () {
         customerFactory.getCustomers().then(function (response) {
             $scope.customers = response.data;
@@ -11,6 +11,8 @@
                 begin = ($scope.currentPage - 1) * $scope.numPerPage;
                 end = begin + $scope.numPerPage;
                 index = $scope.customers.indexOf(value);
+                console.log(value);
+                console.log(index);
                 return (begin <= index && index < end);
             };
             $scope.orderByField = "CustomerID";
@@ -39,9 +41,9 @@
             Phone: customer.Phone
         }
         customerFactory.addCustomer(newCustomer).then(function (response) {
+            customerFactory.getCustomers().then(function () {
                 $scope.status = 'customer added sucessfully';
                 alert($scope.status);
-            customerFactory.getCustomers().then(function () {
                 $('#addModal').modal('hide');
                 $scope.customer.Address = '';
                 $scope.customer.FirstName = '';
@@ -100,7 +102,21 @@
         customerFactory.deleteCustomer(id).then(function (response) {
             $scope.refresh();
             $('#deleteModal').modal('hide');
-            $scope.status = 'customer updated successfully';
+            $scope.status = 'customer deleted successfully';
+            customerFactory.getCustomers().then(function (response) {
+                $scope.customers = response.data;
+                $scope.refresh();
+                $scope.customer.Address = '';
+                $scope.customer.FirstName = '';
+                $scope.customer.LastName = '';
+                $scope.customer.City = '';
+                $scope.customer.State = '';
+                $scope.customer.Zip = '';
+                $scope.customer.Phone = '';
+                $scope.editcustomerform.$setPristine();
+                $scope.editcustomerform.$setUntouched();
+                $scope.currentRecord = {};
+            })
             alert($scope.status);
         }, function (error) {
             $scope.status = 'an error occurred deleting customer ' + error.message;
