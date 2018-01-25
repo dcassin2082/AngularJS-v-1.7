@@ -23,8 +23,9 @@ namespace CustomerCrud
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
                       "~/Scripts/angular-resource.js",
-                      "~/Scripts/ui-bootstrap.js",
-                      "~/Scripts/ui-bootstrap-tpls.js",
+                      "~/Scripts/angular-ui/ui-bootstrap.js",
+                      "~/Scripts/angular-ui/ui-bootstrap-tpls.js"
+                      "~/Scripts/angular-ui/ui-bootstrap-io.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
