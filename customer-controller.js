@@ -45,6 +45,7 @@ app.controller('customerController', ['$scope', 'customerFactory', function ($sc
                 $scope.status = 'customer added sucessfully';
                 alert($scope.status);
                 $('#addModal').modal('hide');
+                $scope.refresh();
                 $scope.customer.Address = '';
                 $scope.customer.FirstName = '';
                 $scope.customer.LastName = '';
