@@ -11,8 +11,6 @@ app.controller('customerController', ['$scope', 'customerFactory', function ($sc
                 begin = ($scope.currentPage - 1) * $scope.numPerPage;
                 end = begin + $scope.numPerPage;
                 index = $scope.customers.indexOf(value);
-                console.log(value);
-                console.log(index);
                 return (begin <= index && index < end);
             };
             $scope.orderByField = "CustomerID";
