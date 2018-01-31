@@ -38,7 +38,7 @@ app.controller('customerController', ['$scope', 'customerFactory', function ($sc
             Zip: customer.Zip,
             Phone: customer.Phone
         }
-        customerFactory.addCustomer(newCustomer).then(function (response) {
+        customerFactory.addCustomer(newCustomer).then(function () {
             customerFactory.getCustomers().then(function () {
                 $scope.status = 'customer added sucessfully';
                 alert($scope.status);
@@ -74,7 +74,7 @@ app.controller('customerController', ['$scope', 'customerFactory', function ($sc
             Zip: customer.Zip,
             Phone: customer.Phone
         }
-        customerFactory.updateCustomer(updatedCustomer).then(function (response) {
+        customerFactory.updateCustomer(updatedCustomer).then(function () {
             $scope.customer.Address = '';
             $scope.customer.FirstName = '';
             $scope.customer.LastName = '';
@@ -98,7 +98,7 @@ app.controller('customerController', ['$scope', 'customerFactory', function ($sc
         })
     }
     $scope.deleteCustomer = function (id) {
-        customerFactory.deleteCustomer(id).then(function (response) {
+        customerFactory.deleteCustomer(id).then(function () {
             $scope.refresh();
             $('#deleteModal').modal('hide');
             $scope.status = 'customer deleted successfully';
